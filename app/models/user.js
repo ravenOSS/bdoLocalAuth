@@ -1,7 +1,7 @@
 // load the things we need
-var mongoose = require('mongoose');
-var bcrypt = require('bcrypt-nodejs');
-const uuidv4 = require('uuid/v4');
+var mongoose = require('mongoose');       // used to interface to mongodb
+var bcrypt = require('bcrypt-nodejs');    // encryption package for password storage
+const uuidv4 = require('uuid/v4');        // universally unique identification used to create account number (temporary)
 
 // define the schema for our user model
 var userSchema = mongoose.Schema({
@@ -17,7 +17,7 @@ var userSchema = mongoose.Schema({
 
 // generating a hash
 userSchema.methods.generateHash = function (password) {
-  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(12), null);
 };
 
 // checking if password is valid

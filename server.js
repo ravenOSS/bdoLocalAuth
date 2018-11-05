@@ -4,7 +4,7 @@
 // get all the tools we need
 var express = require('express');
 var app = express();
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 4000;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash = require('connect-flash');
@@ -17,7 +17,7 @@ var session = require('express-session');
 var configDB = require('./config/database.js');
 
 // configuration ===============================================================
-mongoose.connect(configDB.url); // connect to our database
+mongoose.connect(configDB.url, { useNewUrlParser: true }); // connect to our database
 
 require('./config/passport')(passport); // pass passport for configuration
 
@@ -31,7 +31,7 @@ app.set('view engine', 'ejs'); // set up ejs for templating
 
 // required for passport
 app.use(session({
-  secret: 'thisIsOurSpecialSecret', // session secret
+  secret: 'codingForTheWebSpecialSecret', // session secret
   resave: true,
   saveUninitialized: true
 }));
@@ -44,4 +44,4 @@ require('./app/routes.js')(app, passport); // load our routes and pass in our ap
 
 // launch ======================================================================
 app.listen(port);
-console.log('The magic happens on port ' + port);
+console.log('Server listening on ' + port);
