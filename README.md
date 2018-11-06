@@ -5,7 +5,7 @@
     ---------- user.js  <!-- our user model -->
     ------ routes.js    <!-- all the routes for our application -->
     - config
-    ------ auth.js      <!-- will hold all our client secret keys (facebook, twitter, google) -->
+    ------ auth.js      <!-- Social login credentials (facebook, twitter, google) -->
     ------ database.js  <!-- will hold our database connection settings -->
     ------ passport.js  <!-- configuring the strategies for passport -->
     - views
